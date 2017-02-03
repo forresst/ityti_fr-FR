@@ -1,6 +1,6 @@
 # [Tutoriel Webpack : comprendre comment il fonctionne](https://www.ag-grid.com/ag-grid-understanding-webpack/)
 
->**REMARQUE** : Cet article est une traduction en français de l'excellent article [Webpack Tutorial: Understanding How it Works](https://www.ag-grid.com/ag-grid-understanding-webpack/) écrit par [Sean Landsman](https://github.com/seanlandsman) avec son [aimable autorisation](https://www.ag-grid.com/ag-grid-understanding-webpack/#comment-3131781031)
+>**REMARQUE** : Cet article est une traduction en français de l'excellent article [Webpack Tutorial: Understanding How it Works](https://www.ag-grid.com/ag-grid-understanding-webpack/) écrit par [Sean Landsman](https://github.com/seanlandsman) de la société [ag-Grid](https://www.ag-grid.com/) avec son [aimable autorisation](https://www.ag-grid.com/ag-grid-understanding-webpack/#comment-3131781031)
 
 ## Motivation
 
