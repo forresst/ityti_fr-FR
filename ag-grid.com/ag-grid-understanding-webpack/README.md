@@ -4,7 +4,7 @@
 
 ## Motivation
 
-Ce tutoriel Webpack est ma manière de documenter ce que j'ai appris. C'est aussi le blog que j'aurais aimé trouver lorsque j'ai commencé à parcourir Webpack il y a quelques mois.
+Ce tutoriel Webpack est ma manière à moi de documenter ce que j'ai appris. C'est aussi le blog que j'aurais aimé trouver lorsque j'ai commencé à parcourir Webpack il y a quelques mois.
 
 Quand j'ai commencé à travailler chez ag-Grid (qui est un excellent endroit pour travailler !), j'ai dû monter en compétence sur de nombreuses technologies et frameworks que je n'avais pas utilisé jusqu'à présent. L'un d'eux était Webpack - un puissant *bundler* utilisé dans de nombreuses applications et frameworks.
 
@@ -246,7 +246,7 @@ Il exécute `__webpack_require__(0)` ce qui correspond dans le tableau des modul
 
 Webpack comprend JavaScript. Il peut créer des modules et empaqueter du JavaScript hors de la boîte, mais si vous voulez utiliser quelque chose d'autre que du JavaScript, ou si vous voulez écrire sous ES2015/ES6, alors vous devez dire à Webpack comment traiter cela.
 
-Plus précisément, nous devons pré-traier ces autres langages/versions dans du JavaScript ES5 - la version que Webpack peut comprendre.
+Plus précisément, nous devons prétraiter ces autres langages/versions dans du JavaScript ES5 - la version que Webpack peut comprendre.
 
 Ici à ag-Grid, nous sommes de grands fans de TypeScript, mais pour les besoins de cet exemple, nous allons convertir notre code d'exemple en ES2015 et utiliser Babel pour convertir (ou transpiler) notre code ES2015 en du JavaScript compatible ES5.
 
@@ -411,7 +411,7 @@ import './math_output.css';
 const totalMultiply = multiply(5, 3);
 const totalSum = sum(5, 3);
 
-// créer le bodyNous avons besoin de deux chargeurs pour traiter notre CSS :
+// créer le body
 const body = document.createElement("body");
 document.documentElement.appendChild(body);
 
@@ -465,7 +465,7 @@ module.exports = {
 ```
 
 * `test` : comme précédemment, nous avons besoin de dire aux chargeurs que nous voulons seulement traiter les fichiers CSS - ce regex ne traitera que les fichiers .css
-* `loaders` : les chargeurs à utiliser. Notez que cette fois, c'est au pluriel car nous fournissons un tableau de chargeurs. Notez également que Webpack traite les chargeurs **de droite à gauche**, de sorte que les résultats de `css-loader` (le contenu du fichier) soit transmis à `style-loader` (en ajoutant les styles au document HTML)
+* `loaders` : les chargeurs à utiliser. Notez que cette fois, c'est au pluriel car nous fournissons un tableau de chargeurs. Notez également que Webpack traite les chargeurs **de droite à gauche**, de sorte que les résultats de `css-loader` (le contenu du fichier) soient transmis à `style-loader` (en ajoutant les styles au document HTML)
 
 Si nous exécutons maintenant Webpack et rechargeons notre application, l'affichage ressemblera à ceci :
 
@@ -543,7 +543,7 @@ span {
 }
 ```
 
-C'est évidement le contenu de notre CSS. Pour l'utiliser, nous devons modifier notre `index.html` pour importer ce CSS :
+C'est évidemment le contenu de notre CSS. Pour l'utiliser, nous devons modifier notre `index.html` pour importer ce CSS :
 
 ```html
 // index.html - notre point d'entrée de notre application
