@@ -7,10 +7,10 @@ Toutes mes traductions d'articles
 - [Vue.js](#vuejs)
 - [Webpack](#webpack)
 
-## Vue.js
+# Vue.js
 
 - [Intro à Vue.js](css-tricks.com/intro-to-vue-1-rendering-directives-events)
 
-## Webpack
+# Webpack
 
 - [Tutoriel Webpack : comprendre comment il fonctionne](ag-grid.com/ag-grid-understanding-webpack)

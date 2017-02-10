@@ -7,17 +7,17 @@
 
 
 > Série d'article :
->  1. Rendu, directives et événements
->  2. Composants, Props et Slots
->  3. Vue-cli
+>  1. [Rendu, directives et événements](../intro-to-vue-1-rendering-directives-events)
+>  2. [Composants, Props et Slots](../intro-to-vue-2-components-props-slots)
+>  3. [Vue-cli](../intro-to-vue-3-vue-cli-lifecycle-hooks)
 >  4. Vuex (Ce document !)
->  5. Animations
+>  5. [Animations](../intro-to-vue-5-animations)
 
 
 
 > Série d'article :
->  1. Rendu, directives et événements
->  2. Composants, Props et Slots
->  3. Vue-cli
+>  1. [Rendu, directives et événements](../intro-to-vue-1-rendering-directives-events)
+>  2. [Composants, Props et Slots](../intro-to-vue-2-components-props-slots)
+>  3. [Vue-cli](../intro-to-vue-3-vue-cli-lifecycle-hooks)
 >  4. Vuex (Ce document !)
->  5. Animations
+>  5. [Animations](../intro-to-vue-5-animations)
