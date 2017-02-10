@@ -21,7 +21,7 @@ Supposons que nous avons une application qui peut effectuer deux tâches mathém
 ```javascript
 // sum.js
 var sum = function (a, b) {
-    return a + b;
+	return a + b;
 };
 ```
 
@@ -30,11 +30,11 @@ var sum = function (a, b) {
 // Ici de manière peu habituelle - nous allons répéter la fonction
 // sum dans multiply pour illustrer l'interaction de dépendance
 var multiply = function (a, b) {
-    var total = 0;
-    for (var i = 0; i < b; i++) {
-        total = sum(a, total);
-    }
-    return total;
+	var total = 0;
+	for (var i = 0; i < b; i++) {
+		total = sum(a, total);
+	}
+	return total;
 };
 ```
 
@@ -51,9 +51,9 @@ console.log('La somme de 5 et 3 = ' + totalSum);
 // index.html - notre point d'entrée de notre application
 <html>
 <head>
-    <script src="src/sum.js"></script>
-    <script src="src/multiply.js"></script>
-    <script src="src/index.js"></script>
+	<script src="src/sum.js"></script>
+	<script src="src/multiply.js"></script>
+	<script src="src/index.js"></script>
 </head>
 </html>
 ```
@@ -100,7 +100,7 @@ CommonJS utilise `module.exports` pour exporter - ou pour rendre disponible - le
 ```javascript
 // sum.js
 var sum = function (a, b) {
-    return a + b;
+	return a + b;
 };
 module.exports = sum;
 ```
@@ -110,11 +110,11 @@ module.exports = sum;
 var sum = require('./sum');
 
 var multiply = function (a, b) {
-    var total = 0;
-    for (var i = 0; i < b; i++) {
-        total = sum(a, total);
-    }
-    return total;
+	var total = 0;
+	for (var i = 0; i < b; i++) {
+		total = sum(a, total);
+	}
+	return total;
 };
 module.exports = multiply;
 ```
@@ -135,7 +135,7 @@ console.log('La somme de 5 et 3 = ' + totalSum);
 // index.html - notre point d'entrée de notre application
 <html>
 <head>
-    <script src="./dist/bundle.js"></script>
+	<script src="./dist/bundle.js"></script>
 </head>
 </html>
 ```
@@ -153,11 +153,11 @@ Pour que ce qui précède fonctionne, nous devons faire une configuration initia
 ```javascript
 var path = require('path');
 module.exports = {
-    entry: './src/index.js',
-    output: {
-        path: path.resolve(__dirname, './dist/'),
-        filename: 'bundle.js'
-    }
+	entry: './src/index.js',
+	output: {
+		path: path.resolve(__dirname, './dist/'),
+		filename: 'bundle.js'
+	}
 }
 ```
 
@@ -178,63 +178,63 @@ Regarder le `bundle.js` généré peut être très instructif (il a été mise e
 ```javascript
 // Le bootstrap de webpack
 (function (modules) {
-    // Le cache du module
-    var installedModules = {};
+	// Le cache du module
+	var installedModules = {};
 
-    // La fonction require
-    function __webpack_require__(moduleId) {
-        // Vérifie si le module est dans le cache
-        // Crée un nouveau module (et le met dans le cache)
-        // Exécute la fonction du module
-        // Marque le module comme chargé
-        // Retourne les exports du module
-    }
+	// La fonction require
+	function __webpack_require__(moduleId) {
+		// Vérifie si le module est dans le cache
+		// Crée un nouveau module (et le met dans le cache)
+		// Exécute la fonction du module
+		// Marque le module comme chargé
+		// Retourne les exports du module
+	}
 
 
-    // expose l'objet des modules (__webpack_modules__)
-    // expose le cache du module
-    // charge le module d'entrée et retourne les exports
-    return __webpack_require__(0);
+	// expose l'objet des modules (__webpack_modules__)
+	// expose le cache du module
+	// charge le module d'entrée et retourne les exports
+	return __webpack_require__(0);
 })
 /************************************************************************/
 ([
-    // index.js - notre logique applicative
-    /* 0 */
-    function (module, exports, __webpack_require__) {
+	// index.js - notre logique applicative
+	/* 0 */
+	function (module, exports, __webpack_require__) {
 
-        var multiply = __webpack_require__(1);
-        var sum = __webpack_require__(2);
+		var multiply = __webpack_require__(1);
+		var sum = __webpack_require__(2);
 
-        var totalMultiply = multiply(5, 3);
-        var totalSum = sum(5, 3);
+		var totalMultiply = multiply(5, 3);
+		var totalSum = sum(5, 3);
 
-        console.log('Le produit de 5 et 3 = ' + totalMultiply);
-        console.log('La somme de 5 et 3 = ' + totalSum);
-    },
-    // multiply.js
-    /* 1 */
-    function (module, exports, __webpack_require__) {
+		console.log('Le produit de 5 et 3 = ' + totalMultiply);
+		console.log('La somme de 5 et 3 = ' + totalSum);
+	},
+	// multiply.js
+	/* 1 */
+	function (module, exports, __webpack_require__) {
 
-        var sum = __webpack_require__(2);
+		var sum = __webpack_require__(2);
 
-        var multiply = function (a, b) {
-            var total = 0;
-            for (var i = 0; i < b; i++) {
-                total = sum(a, total);
-            }
-            return total;
-        };
-        module.exports = multiply;
-    },
-    // sum.js
-    /* 2 */
-    function (module, exports) {
+		var multiply = function (a, b) {
+			var total = 0;
+			for (var i = 0; i < b; i++) {
+				total = sum(a, total);
+			}
+			return total;
+		};
+		module.exports = multiply;
+	},
+	// sum.js
+	/* 2 */
+	function (module, exports) {
 
-        var sum = function (a, b) {
-            return a + b;
-        };
-        module.exports = sum;
-    }
+		var sum = function (a, b) {
+			return a + b;
+		};
+		module.exports = sum;
+	}
 ]);
 ```
 
@@ -266,11 +266,11 @@ export default sum;
 import sum from './sum';
 
 const multiply = (a, b) => {
-    let total = 0;
-    for(let i=0;i<b;i++) {
-        total = sum(a, total);
-    }
-    return total;
+	let total = 0;
+	for(let i=0;i<b;i++) {
+		total = sum(a, total);
+	}
+	return total;
 };
 
 export default multiply;
@@ -307,23 +307,23 @@ La configuration de Webpack avec le Babel Loader en place ressemble à ceci :
 const path = require('path');
 
 module.exports = {
-    entry: './src/index.js',
-    output: {
-        path: path.resolve(__dirname, './dist/'),
-        filename: 'bundle.js'
-    },
-    module: {
-        loaders: [
-            {
-                test: /\.js$/,
-                loader: 'babel-loader',
-                exclude: /node_modules/,
-                query: {
-                    presets: ['es2015']
-                }
-            }
-        ]
-    }
+	entry: './src/index.js',
+	output: {
+		path: path.resolve(__dirname, './dist/'),
+		filename: 'bundle.js'
+	},
+	module: {
+		loaders: [
+			{
+				test: /\.js$/,
+				loader: 'babel-loader',
+				exclude: /node_modules/,
+				query: {
+					presets: ['es2015']
+				}
+			}
+		]
+	}
 };
 ```
 
@@ -339,11 +339,11 @@ En regardant à nouveau notre `bundle.js` (et cette fois en regardant seulement 
 ```javascript
 /* 2 */
 function(module, exports) {
-    var sum = function sum(a, b) {
-        return a + b;
-    };
+	var sum = function sum(a, b) {
+		return a + b;
+	};
 
-    module.exports = sum;
+	module.exports = sum;
 }
 ```
 
@@ -391,8 +391,8 @@ Notre CSS ressemblera à ceci :
 ```css
 // math_output.css
 span {
-    border: 5px solid brown;
-    display:block;
+	border: 5px solid brown;
+	display:block;
 }
 ```
 
@@ -440,27 +440,27 @@ Notre config Webpack ressemble maintenant à ceci :
 const path = require('path');
 
 module.exports = {
-    entry: './src/index.js',
-    output: {
-        path: path.resolve(__dirname, './dist/'),
-        filename: 'bundle.js'
-    },
-    module: {
-        loaders: [
-            {
-                test: /\.js$/,
-                loader: 'babel-loader',
-                exclude: /node_modules/,
-                query: {
-                    presets: ['es2015']
-                }
-            },
-            {
-                test: /\.css$/,
-                loaders: ['style-loader', 'css-loader']
-            }
-        ]
-    }
+	entry: './src/index.js',
+	output: {
+		path: path.resolve(__dirname, './dist/'),
+		filename: 'bundle.js'
+	},
+	module: {
+		loaders: [
+			{
+				test: /\.js$/,
+				loader: 'babel-loader',
+				exclude: /node_modules/,
+				query: {
+					presets: ['es2015']
+				}
+			},
+			{
+				test: /\.css$/,
+				loaders: ['style-loader', 'css-loader']
+			}
+		]
+	}
 };
 ```
 
@@ -488,30 +488,30 @@ const path = require('path');
 const ExtractTextPlugin = require('extract-text-webpack-plugin');
 
 module.exports = {
-    entry: './src/index.js',
-    output: {
-        path: path.resolve(__dirname, './dist/'),
-        filename: 'bundle.js'
-    },
-    module: {
-        loaders: [
-            {
-                test: /\.js$/,
-                loader: 'babel-loader',
-                exclude: /node_modules/,
-                query: {
-                    presets: ['es2015']
-                }
-            },
-            {
-                test: /\.css$/,
-                loader: ExtractTextPlugin.extract('css-loader')
-            }
-        ]
-    },
-    plugins: [
-        new ExtractTextPlugin('style.css')
-    ]
+	entry: './src/index.js',
+	output: {
+		path: path.resolve(__dirname, './dist/'),
+		filename: 'bundle.js'
+	},
+	module: {
+		loaders: [
+			{
+				test: /\.js$/,
+				loader: 'babel-loader',
+				exclude: /node_modules/,
+				query: {
+					presets: ['es2015']
+				}
+			},
+			{
+				test: /\.css$/,
+				loader: ExtractTextPlugin.extract('css-loader')
+			}
+		]
+	},
+	plugins: [
+		new ExtractTextPlugin('style.css')
+	]
 };
 ```
 
@@ -519,8 +519,8 @@ Au début du fichier, nous importons ExtractTextPlugin. Nous avons également mo
 
 ```javascript
 {
-    test: /\.css$/,
-    loader: ExtractTextPlugin.extract('css-loader')
+	test: /\.css$/,
+	loader: ExtractTextPlugin.extract('css-loader')
 }
 ```
 
@@ -528,7 +528,7 @@ Cela indique à Webpack de transmettre les générations de css-loader à Extrac
 
 ```javascript
 plugins: [
-    new ExtractTextPlugin('style.css')
+	new ExtractTextPlugin('style.css')
 ]
 ```
 
@@ -538,8 +538,8 @@ En regardant dist/style.css, nous pouvons voir :
 
 ```css
 span {
-    border: 5px solid brown;
-    display:block;
+	border: 5px solid brown;
+	display:block;
 }
 ```
 
@@ -549,8 +549,8 @@ C'est évidemment le contenu de notre CSS. Pour l'utiliser, nous devons modifier
 // index.html - notre point d'entrée de notre application
 <html>
 <head>
-    <link rel="stylesheet" href="dist/style.css"/>
-    <script src="./dist/bundle.js"></script>
+	<link rel="stylesheet" href="dist/style.css"/>
+	<script src="./dist/bundle.js"></script>
 </head>
 </html>
 ```
@@ -574,11 +574,11 @@ Tout d'abord, ajoutons une nouvelle classe d'utilitaire d'image - cela nous cré
 ```javascript
 // image_util.js
 const addImageToPage = (imageSrc) => {
-    const image = document.createElement('img');
-    image.src = imageSrc;
-    image.style.height = '100px';
-    image.style.width = '100px';
-    document.body.appendChild(image);
+	const image = document.createElement('img');
+	image.src = imageSrc;
+	image.style.height = '100px';
+	image.style.width = '100px';
+	document.body.appendChild(image);
 };
 
 export default addImageToPage;
@@ -631,38 +631,38 @@ const path = require('path');
 const ExtractTextPlugin = require('extract-text-webpack-plugin');
 
 module.exports = {
-    entry: './src/index.js',
-    output: {
-        path: path.resolve(__dirname, './dist/'),
-        filename: 'bundle.js',
-        publicPath: 'dist/'
-    },
-    module: {
-        loaders: [
-            {
-                test: /\.js$/,
-                loader: 'babel-loader',
-                exclude: /node_modules/,
-                query: {
-                    presets: ['es2015']
-                }
-            },
-            {
-                test: /\.css$/,
-                loader: ExtractTextPlugin.extract('css-loader')
-            },
-            {
-                test: /\.png$/,
-                loaders: [
-                    'url-loader?limit=5000',
-                    'image-webpack-loader'
-                ]
-            }
-        ]
-    },
-    plugins: [
-        new ExtractTextPlugin('style.css')
-    ]
+	entry: './src/index.js',
+	output: {
+		path: path.resolve(__dirname, './dist/'),
+		filename: 'bundle.js',
+		publicPath: 'dist/'
+	},
+	module: {
+		loaders: [
+			{
+				test: /\.js$/,
+				loader: 'babel-loader',
+				exclude: /node_modules/,
+				query: {
+					presets: ['es2015']
+				}
+			},
+			{
+				test: /\.css$/,
+				loader: ExtractTextPlugin.extract('css-loader')
+			},
+			{
+				test: /\.png$/,
+				loaders: [
+					'url-loader?limit=5000',
+					'image-webpack-loader'
+				]
+			}
+		]
+	},
+	plugins: [
+		new ExtractTextPlugin('style.css')
+	]
 };
 ```
 
