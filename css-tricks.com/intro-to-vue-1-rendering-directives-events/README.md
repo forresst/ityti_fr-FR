@@ -4,29 +4,29 @@
 
 ## Introduction
 
-Si je devais résumer, en une phrase, mon expérience avec [Vue](https://vuejs.org/), je dirais sans doute quelque chose comme "Il est tellement suffisant" ou "Il me donne les outils que je veux quand je veux, et il ne se met jamais en travers de mon chemin". À plusieurs reprises, en apprenant Vue, je me suis souri. C'est juste logique et judicieux.
+Si je devais résumer, en une phrase, mon expérience avec [Vue](https://vuejs.org/), je dirais sans doute quelque chose comme "Il me suffit amplement" ou "Il me donne les outils, que je veux, quand je veux et il ne se met jamais en travers de mon chemin". À plusieurs reprises, en apprenant Vue, j'étais ravi. C'est juste logique et judicieux.
 
 C'est ma propre introduction sur Vue. C'est l'article que j'aurais aimé lire quand j'ai appris Vue. Si vous souhaitez une approche plus impartiale, veuillez visiter le site de Vue qui est très bien pensé et facile en suivant le [Guide](https://vuejs.org/v2/guide/).
 
-> Série d'article :
+> Série d'articles :
 >  1. Rendu, directives et événements (Ce document !)
 >  2. [Composants, Props et Slots](../intro-to-vue-2-components-props-slots)
 >  3. [Vue-cli](../intro-to-vue-3-vue-cli-lifecycle-hooks)
 >  4. [Vuex](../intro-to-vue-4-vuex)
 >  5. [Animations](../intro-to-vue-5-animations)
 
-L'une des choses que j'ai préféré de Vue, c'est qu'il a récupéré toutes les choses réussies des autres frameworks et les a incorporés de façon méthodique. Voici quelques exemples importants pour moi :
+L'une des choses que j'ai préférée dans Vue, c'est qu'il a récupéré toutes les concepts réussis des autres frameworks et les a incorporés de façon méthodique. Voici quelques exemples importants pour moi :
 * Un DOM virtuel avec des composants réactifs qui proposent uniquement la couche de la Vue, des *props* et un *store* d'un Redux-like similaire à React.
 * Un rendu conditionnel et des services, semblables à Angular.
 * Inspiré par Polymer en partie en termes de simplicité et de performance, Vue offre un style de développement similaire à celui du HTML, des styles et du JavaScript qui sont composés de pair.
 
-Face aux concurrents, Vue a quelques avantages que j'ai apprécié : plus propre, plus d'offres d'API sémantique, une performance légèrement meilleure que React, aucune utilisation de polyfills comme Polymer, une Vue isolée et moins opiniâtre qu'Angular qui est un MVC.
+Face aux concurrents, Vue a quelques avantages que j'ai appréciés : plus propre, plus d'offres d'API sémantique, une performance légèrement meilleure que React, aucune utilisation de polyfills comme Polymer, une Vue isolée et moins opiniâtre qu'Angular qui est un MVC.
 
 Je pourrais poursuivre, mais il serait préférable que vous lisiez [la comparaison](https://vuejs.org/v2/guide/comparison.html) complète et axée sur la communauté avec d'autres frameworks. Elle vaut la peine d'être lue, mais vous pouvez y revenir plus tard si vous souhaitez plonger dans le code.
 
 ## Commençons !
 
-Nous ne pouvons pas commencer sans faire l'exemple "Hello, world!". Faisons-le pour que vous puissiez vous lancer :
+Nous ne pouvons pas commencer sans faire l'exemple "Hello, World!". Faisons-le pour que vous puissiez vous lancer :
 
 HTML :
 ```HTML
@@ -47,41 +47,41 @@ new Vue({
 
 *[Démo](http://codepen.io/sdras/pen/b52b1252469a353830683aeaccbecd01) sur CodePen*
 
-Si vous êtes familier avec React, vous verrez quelques similitudes. Nous avons sorti vers le code JavaScript une partie du contenu avec un template de mustache et utilisé une variable, mais l'une des différences, c'est que nous travaillons directement avec du HTML au lieu de [JSX](https://facebook.github.io/react/docs/introducing-jsx.html). JSX est assez facile à utiliser, mais je crois vraiment qu'il est agréable de ne pas passer du temps à changer `class` en `className`, etc. Vous remarquerez également que c'est assez léger pour démarrer.
+Si vous êtes familier avec React, vous verrez quelques similitudes. Nous avons poussé vers le code JavaScript une partie du contenu avec un template mustache et utilisé une variable, mais l'une des différences, c'est que nous travaillons directement avec du HTML au lieu d'utiliser du [JSX](https://facebook.github.io/react/docs/introducing-jsx.html). JSX est assez facile à utiliser, mais je crois vraiment qu'il est agréable de ne pas passer du temps à changer `class` en `className`, etc. Vous remarquerez également que c'est assez léger pour démarrer.
 
 Maintenant, essayons Vue avec quelque chose que j'aime vraiment : les boucles et le rendu conditionnel.
 
 ## Rendu conditionnel
 
-Disons que j'ai un ensemble d'éléments, comme un menu, que je sais que je vais réutiliser. Il serait judicieux de le mettre dans un tableau pour l'actualiser à certains endroits de manière dynamique et cohérente. En vanilla JS (avec Babel), nous pourrions faire quelque chose comme cela : créer le tableau, puis créer une chaîne vide où nous ajoutons chaque élément dans un `<li>`, envelopper le tout dans un `<ul>` et l'ajouter au DOM avec `innerHTML` :
+Disons que j'ai un ensemble d'éléments, comme un menu, que je sais que je vais réutiliser. Il serait judicieux de le mettre dans un tableau pour l'actualiser à divers endroits de manière dynamique et cohérente. En Vanilla JS (avec Babel), nous pourrions faire quelque chose comme cela : créer le tableau, puis créer une chaîne vide où nous ajoutons chaque élément dans un `<li>`, envelopper le tout dans un `<ul>` et l'ajouter au DOM avec `innerHTML` :
 
 HTML :
 ```HTML
-<div id="container"></div>
+<div id="conteneur"></div>
 ```
 
 JS :
 ```javascript
-const items = [
-	'thingie',
-	'another thingie',
-	'lots of stuff',
-	'yadda yadda'
+const elements = [
+  'chose',
+  'autre chose',
+  'beaucoup de choses',
+  'bla bla bla'
 ];
 
-function listOfStuff() {
-	let full_list = '';
-	for (let i = 0; i < items.length; i++) {
-		full_list = full_list + `<li> ${items[i]} </li>`
-	}
-	const contain = document.querySelector('#container');
-	contain.innerHTML = `<ul> ${full_list} </ul>`;
+function listeDesChoses() {
+  let liste_complete = '';
+  for(let i = 0; i < elements.length; i++) {
+      liste_complete = liste_complete + `<li> ${elements[i]} </li>`
+  }
+  const conteneur = document.querySelector('#conteneur');
+  conteneur.innerHTML = `<ul> ${liste_complete} </ul>`;
 }
 
-listOfStuff();
+listeDesChoses();
 ```
 
-*[Démo](http://codepen.io/sdras/pen/e699f60b79b90a35401cc2bcbc588159) sur CodePen*
+*[Démo](http://codepen.io/forresst/pen/KaYvMp) sur CodePen*
 
 Cela fonctionne très bien, mais c’est un peu brouillon pour quelque chose de standard. Maintenant, nous allons implémenter la même chose avec la boucle `v-for` de Vue :
 
@@ -89,8 +89,8 @@ HTML :
 ```HTML
 <div id="app">
 	<ul>
-		<li v-for="item in items">
-			{{ item }}
+		<li v-for="element in elements">
+			{{ element }}
 		</li>
 	</ul>
 </div>
@@ -101,17 +101,17 @@ JS :
 const app4 = new Vue({
 	el: '#app',
 	data: {
-		items: [
-			'thingie',
-			'another thingie',
-			'lots of stuff',
-			'yadda yadda'
+		elements: [
+			'chose',
+			'autre chose',
+			'beaucoup de choses',
+			'bla bla bla'
 		]
 	}
 });
 ```
 
-*[Démo](http://codepen.io/sdras/pen/af6307c633262350c9642f554ff64b55) sur CodePen*
+*[Démo](http://codepen.io/forresst/pen/ggyGgP) sur CodePen*
 
 C'est assez propre et déclaratif. Si vous êtes familier avec Angular, cela vous sera probablement familier. Je trouve que c'est une façon propre et lisible de rendre le contenu de manière conditionnelle. Si vous deviez sauter dans le code et le mettre à jour, vous pourriez le faire très facilement.
 
@@ -120,9 +120,9 @@ Un autre point vraiment sympa, c'est la liaison dynamique avec `v-model`. Regard
 HTML :
 ```HTML
 <div id="app">
-	<h3>Type here:</h3>
-	<textarea v-model="message" class="message" rows="5" maxlength="72"></textarea><br>
-	<p class="booktext">{{ message }} </p>
+	<h3>Saisissez ici :</h3>
+	<textarea class="message" rows="5" v-model="message" maxlength="72"></textarea><br>
+	<p class="textelivre">{{ message }} </p>
 </div>
 ```
 
@@ -132,13 +132,13 @@ new Vue({
 	el: '#app',
 	data() {
 		return {
-			message: 'This is a good place to type things.'
+			message: 'C\'est un bon endroit pour écrire quelque chose.'
 		}
 	}
 });
 ```
 
-*[Démo](http://codepen.io/sdras/pen/fc5a128716814995b888d362a5e1b367) sur CodePen*
+*[Démo](http://codepen.io/forresst/pen/oBOGrj) sur CodePen*
 
 Vous remarquez probablement deux choses au sujet de cette démo. Tout d'abord, qu’il n'y a rien à taper directement dans le livre et que dynamiquement le texte se met à jour. Vue nous permet de créer très facilement une liaison bidirectionnelle entre `<textarea>` et `<p>` avec `v-model`.
 
@@ -181,12 +181,12 @@ new Vue({
 	el: '#app',
 	data() {
 		return {
-			counter: 0
+			compteur: 0
 		}
 	},
 	methods: {
-		increment() {
-			this.counter++;
+		incrementer() {
+			this.compteur++;
 		}
 	}
 });
@@ -195,11 +195,11 @@ new Vue({
 HTML :
 ```HTML
 <div id="app">
-	<p><button @click="increment">+</button> {{ counter }}</p>
+	<p><button @click="incrementer">+</button> {{ compteur }}</p>
 </div>
 ```
 
-Nous créons une méthode appelée `increment` et vous pouvez voir que cela se lie automatiquement à `this` et donc se référera aux données dans cette instance et ce composant. J'aime ce type de liaison automatique, c'est si agréable de ne pas avoir à faire un `console.log` pour voir à quoi se réfère `this`. Nous utilisons le raccourci `@click` pour lier ici l'évènement click.
+Nous créons une méthode appelée `incrementer` et vous pouvez voir que cela se lie automatiquement à `this` et donc se référera aux données dans cette instance et ce composant. J'aime ce type de liaison automatique, c'est si agréable de ne pas avoir à faire un `console.log` pour voir à quoi se réfère `this`. Nous utilisons le raccourci `@click` pour lier ici l'évènement click.
 
 Les méthodes ne sont pas la seule façon de créer une fonction personnalisée. Vous pouvez également utiliser `watch`. La principale différence : les méthodes sont bien pour les calculs qui sont petits et synchrones, tandis que `watch` est utile pour des opérations avec plus de tâches ou des opérations asynchrones ou couteuses en réponse dans le cas d'un échange de données. J'ai tendance à utiliser plus souvent `watch` avec les animations.
 
@@ -213,18 +213,18 @@ new Vue({
 	el: '#app',
 	data() {
 		return {
-			counter: 0,
+			compteur: 0,
 			x: 0
 		}
 	},
 	methods: {
-		increment() {
-			this.counter++;
+		incrementer() {
+			this.compteur++;
 		},
-		decrement() {
-			this.counter--;
+		decrementer() {
+			this.compteur--;
 		},
-		xCoordinate(e) {
+		xCoordonner(e) {
 			this.x = e.clientX;
 		}
 	}
@@ -233,13 +233,13 @@ new Vue({
 
 HTML :
 ```HTML
-<div id="app" :style="{ backgroundColor: `hsl(${x}, 80%, 50%)` }" @mousemove="xCoordinate">
-	<p><button @click="increment">+</button> {{ counter }} <button @click="decrement">-</button></p>
-	<p>Pixels across: {{ x }}</p>
+<div id="app" :style="{ backgroundColor: `hsl(${x}, 80%, 50%)` }" @mousemove="xCoordonner">
+	<p><button @click="incrementer">+</button> {{ compteur }} <button @click="decrementer">-</button></p>
+	<p>Nombre de Pixel parcouru : {{ x }}</p>
 </div>
 ```
 
-*[Démo](http://codepen.io/sdras/pen/75205908c2189487ca91f9b49c1c978a) sur CodePen*
+*[Démo](http://codepen.io/forresst/pen/XpQYzx) sur CodePen*
 
 Vous pouvez voir que nous avons pas eu besoin de passer l'événement au gestionnaire de `@click`, Vue le passe automatiquement pour vous et il sera disponible comme paramètre pour la méthode. (représenté ici par `e`).
 
@@ -252,12 +252,12 @@ HTML :
 <div id="app">
 	<div class="item">
 		<img src="https://s3-us-west-2.amazonaws.com/s.cdpn.io/28963/backpack.jpg" width="235" height="300"/>
-		<div class="quantity">
-			<button class="inc" @click="counter > 0 ? counter -= 1 : 0">-</button>
-			<span class="quant-text">Quantity: {{ counter }}</span>
-			<button class="inc" @click="counter += 1">+</button>
+		<div class="quantitee">
+			<button class="inc" @click="compteur > 0 ? compteur -= 1 : 0">-</button>
+			<span class="quant-text">Quantité : {{ compteur }}</span>
+			<button class="inc" @click="compteur += 1">+</button>
 		</div>
-		<button class="submit" @click="">Submit</button>
+		<button class="envoyer" @click="">Envoyer</button>
 	</div><!--item-->
 </div>
 ```
@@ -268,17 +268,17 @@ new Vue({
 	el: '#app',
 	data() {
 		return {
-			counter: 0
+			compteur: 0
 		}
 	}
 });
 ```
 
-*[Démo](http://codepen.io/sdras/pen/f979956bee610da7563db67b1358619f) sur CodePen*
+*[Démo](http://codepen.io/forresst/pen/pRBZjx) sur CodePen*
 
 Vous pouvez constater que nous mettons à jour l'état directement dans le gestionnaire de `@click` sans méthode - vous pouvez également voir que nous pouvons ajouter un peu de logique là aussi (car vous n'aurez jamais d'article en dessous de zéro sur un site d'achat). Dès que cette logique devient trop complexe, vous sacrifiez la lisibilité, donc il est bon de le déplacer dans une méthode. C'est bien d'avoir l'option pour l'un ou l'autre.
 
-> Série d'article :
+> Série d'articles :
 >  1. Rendu, directives et événements (Ce document !)
 >  2. [Composants, Props et Slots](../intro-to-vue-2-components-props-slots)
 >  3. [Vue-cli](../intro-to-vue-3-vue-cli-lifecycle-hooks)

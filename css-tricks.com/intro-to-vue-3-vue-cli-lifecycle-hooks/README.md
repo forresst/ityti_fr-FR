@@ -6,7 +6,7 @@
 
 
 
-> Série d'article :
+> Série d'articles :
 >  1. [Rendu, directives et événements](../intro-to-vue-1-rendering-directives-events)
 >  2. [Composants, Props et Slots](../intro-to-vue-2-components-props-slots)
 >  3. Vue-cli (Ce document !)
@@ -15,7 +15,7 @@
 
 
 
-> Série d'article :
+> Série d'articles :
 >  1. [Rendu, directives et événements](../intro-to-vue-1-rendering-directives-events)
 >  2. [Composants, Props et Slots](../intro-to-vue-2-components-props-slots)
 >  3. Vue-cli (Ce document !)
