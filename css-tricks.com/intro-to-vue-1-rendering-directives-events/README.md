@@ -155,7 +155,7 @@ v-bind | : | Lie dynamiquement les attributs ou passe les props | `<div :style="
 v-on | @ | Attache un écouteur (listener) d'événements à l'élément | `<button @click="fnName"></button>`
 v-model | aucun | Crée une liaison bidirectionnelle | `<textarea rows="5" v-model="message" maxlength="72"></textarea>`
 v-pre | aucun | Saute la compilation pour le contenu brut, peut améliorer les performances | `<div v-pre>{{ contenu brut avec aucune méthode}}</div>`
-v-once | aucun | Ne pas re-rendre | `<div class=”v-once”>Ne fait pas de re-rendu</div>`
+v-once | aucun | Ne pas rendre une nouvelle fois | `<div class=”v-once”>Ne fait pas un nouveau rendu</div>`
 v-show | aucun | Affichera ou masquera un composant/élément en fonction de state, mais il le laissera dans le DOM sans démontage (contrairement à v-if) | `<child v-show=”showComponent”></child>` (Active la visibilité lorsque showComponent est vrai)
 
 Il y a aussi des modificateurs d'événements très agréables et d'autres API pour accélérer le développement comme :
