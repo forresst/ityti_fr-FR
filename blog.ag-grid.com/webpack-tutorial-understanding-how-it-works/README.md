@@ -1,14 +1,12 @@
-# [Tutoriel Webpack : comprendre comment il fonctionne](https://www.ag-grid.com/ag-grid-understanding-webpack/)
+# [Tutoriel Webpack : comprendre comment il fonctionne](https://blog.ag-grid.com/webpack-tutorial-understanding-how-it-works/)
 
->**REMARQUE** : Cet article est une traduction en français de l'excellent article [Webpack Tutorial: Understanding How it Works](https://www.ag-grid.com/ag-grid-understanding-webpack/) écrit par [Sean Landsman](https://github.com/seanlandsman) de la société [ag-Grid](https://www.ag-grid.com/) avec son [aimable autorisation](https://www.ag-grid.com/ag-grid-understanding-webpack/#comment-3131781031)
+>**REMARQUE** : Cet article est une traduction en français de l'excellent article [Webpack Tutorial: Understanding How it Works](https://blog.ag-grid.com/webpack-tutorial-understanding-how-it-works/) écrit par [Sean Landsman](https://github.com/seanlandsman) de la société [ag-Grid](https://www.ag-grid.com/) avec son [aimable autorisation](https://www.ag-grid.com/ag-grid-understanding-webpack/#comment-3131781031)
 
-## Motivation
+Ce tutoriel [Webpack](https://webpack.js.org/?source=post_page---------------------------) est ma manière à moi de documenter ce que j'ai appris. C'est aussi le blog que j'aurais aimé trouver lorsque j'ai commencé à parcourir **Webpack** il y a quelques mois.
 
-Ce tutoriel Webpack est ma manière à moi de documenter ce que j'ai appris. C'est aussi le blog que j'aurais aimé trouver lorsque j'ai commencé à parcourir Webpack il y a quelques mois.
+Quand j'ai commencé à travailler chez [ag-Grid](https://www.ag-grid.com/?utm_source=webpacktutorial&utm_medium=blog&utm_campaign=medium&source=post_page---------------------------) (qui est un excellent endroit pour travailler !), j'ai dû monter en compétence sur de nombreuses technologies et frameworks que je n'avais pas utilisé jusqu'à présent. L'un d'eux était [Webpack](https://webpack.js.org/?source=post_page---------------------------) - un puissant *bundler* utilisé dans de nombreuses applications et frameworks.
 
-Quand j'ai commencé à travailler chez ag-Grid (qui est un excellent endroit pour travailler !), j'ai dû monter en compétence sur de nombreuses technologies et frameworks que je n'avais pas utilisé jusqu'à présent. L'un d'eux était Webpack - un puissant *bundler* utilisé dans de nombreuses applications et frameworks.
-
-Nous utilisons Webpack chez ag-Grid pour empaqueter (bundle) nos propres produits, afin de les utiliser avec nos exemples de framework. Bien qu'il existe des alternatives à Webpack, il est encore très populaire et avec la version 2.2 récemment publié, je crois qu'il le restera encore un bon moment.
+Nous utilisons Webpack chez [ag-Grid](https://www.ag-grid.com/?utm_source=webpacktutorial&utm_medium=blog&utm_campaign=medium&source=post_page---------------------------) pour empaqueter (bundle) nos propres produits, afin de les utiliser avec nos exemples de framework. Bien qu'il existe des alternatives à Webpack, il est encore très populaire et avec la version 2.2 récemment publié, je crois qu'il le restera encore un bon moment.
 
 ## Introduction du tutoriel Webpack
 
@@ -18,11 +16,24 @@ Tout le code du blog peut être trouvé dans le dépôt [Webpack Tutorial: Under
 
 Supposons que nous avons une application qui peut effectuer deux tâches mathématiques simples - la somme et la multiplication. Nous décidons de séparer ces deux fonctions dans des fichiers distincts pour faciliter la maintenance :
 
+```html
+// index.html - notre point d'entrée de notre application
+<html>
+<head>
+	<script src="src/sum.js"></script>
+	<script src="src/multiply.js"></script>
+	<script src="src/index.js"></script>
+</head>
+</html>
+```
+
 ```javascript
-// sum.js
-var sum = function (a, b) {
-	return a + b;
-};
+// index.js - notre logique applicative
+var totalMultiply = multiply(5, 3);
+var totalSum = sum(5, 3);
+
+console.log('Le produit de 5 et 3 = ' + totalMultiply);
+console.log('La somme de 5 et 3 = ' + totalSum);
 ```
 
 ```javascript
@@ -39,23 +50,10 @@ var multiply = function (a, b) {
 ```
 
 ```javascript
-// index.js - notre logique applicative
-var totalMultiply = multiply(5, 3);
-var totalSum = sum(5, 3);
-
-console.log('Le produit de 5 et 3 = ' + totalMultiply);
-console.log('La somme de 5 et 3 = ' + totalSum);
-```
-
-```html
-// index.html - notre point d'entrée de notre application
-<html>
-<head>
-	<script src="src/sum.js"></script>
-	<script src="src/multiply.js"></script>
-	<script src="src/index.js"></script>
-</head>
-</html>
+// sum.js
+var sum = function (a, b) {
+	return a + b;
+};
 ```
 
 L'affichage ressemblera à cela :
