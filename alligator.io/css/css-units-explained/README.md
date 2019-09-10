@@ -19,3 +19,24 @@ Dans ce cas, `margin` est la propriété, `20px;` est la valeur et `px` (ou "pix
 Même s'il est courant de voir des unités comme `px` utilisées, la grande question est souvent de savoir « Quelle est la meilleure unité à utiliser ici ? ».
 
 Eh bien, découvrons-le ! ✨
+
+## Unités absolues par rapport aux unités relatives
+
+Lorsque vous considérez toutes les options pour déterminer quelles sont les unités à utiliser, il est important de considérer les deux catégories d'unités : absolue et relative.
+
+### Unités absolues
+
+Les unités qui sont "absolues" ont la même taille indépendamment de l'élément parent ou de la taille de la fenêtre. Cela signifie que la définition de propriétés avec une valeur qui a une unité absolue sera de cette taille lorsqu'on la regarde sur un téléphone ou sur un grand écran (et tout ce qui se trouve entre les deux !).
+
+Les unités absolues peuvent être utiles pour travailler sur un projet où la réactivité n'est pas prise en compte. Par exemple, les applications de bureau qui ne peuvent pas être redimensionnées, peuvent être stylisées pour des dimensions par défaut. Si la fenêtre ne change pas d'échelle, vous n'avez pas besoin non plus du contenu.
+
+> Conseil : les unités absolues peuvent être moins favorables pour les sites réactifs parce qu'elles n'évoluent pas lorsque la taille de l'écran change.
+
+Absolue | Description unité | Exemple
+---------|-----------------|--------
+px | 1/96 de 1 pouce (96px = 1 pouce) | font-size: 12px;
+pt | 1/72 of 1 pouce (72pt = 1 pouce) | font-size: 12pt;
+pc | 12pt = 1pc | font-size: 1.2pc;
+cm | centimétre | font-size: 0.6cm;
+mm | millimétre | (10 mm = 1 cm) |	font-size: 4mm;
+in | pouce (inch) |	font-size: 0.2in;
