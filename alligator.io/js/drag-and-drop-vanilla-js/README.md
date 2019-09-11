@@ -1,24 +1,3 @@
-<style>
-.example-parent {
-    border: 2px solid #DFA612;
-    height: 4rem;
-    display: flex;
-    justify-content: space-between;
-    color: black;
-    margin-bottom: 10px;
-    font-weight: bold;
-    width: 60%;
-}
-.example-draggable {
-    background-color: #4AAE9B;
-    padding: 10px;
-}
-.example-dropzone {
-    background-color: #6DB65B;
-    padding: 10px;
-}
-</style>
-
 # Faire du glisser-déposer d'éléments avec du JavaScript et du HTML
 
 >**REMARQUE** : Cet article est une traduction en français de l'excellent article [Drag & Drop Elements with Vanilla JavaScript and HTML](https://alligator.io/js/drag-and-drop-vanilla-js/) écrit par [Jess Mitchell](https://github.com/jessmitch42) avec son aimable autorisation. Tous les articles sur [alligator.io](http://alligator.io) sont la propriété de `alligator.io`.
@@ -48,13 +27,6 @@ Pour simplifier les choses, désignons les éléments déplacés par les éléme
 </div>
 ```
 
-<div class='example-parent'>
-  <span id='draggableSpan' class='example-draggable'>
-    draggable
-  </span>
-  <span class='example-dropzone'> dropzone </span>
-</div>
-
 Notre premier exemple ici est la structure par défaut et les enfants ne peuvent pas être déplacés.
 
 Commençons donc par rendre explicitement notre élément déplaçable, pour qu'il puisse être glissé. Pour cela, nous devons utiliser l'attribut `draggable` de la manière suivante :
@@ -67,13 +39,6 @@ Commençons donc par rendre explicitement notre élément déplaçable, pour qu'
   <span> dropzone </span>
 </div>
 ```
-
-<div class='example-parent'>
-  <span id='draggableSpan' draggable="true" class='example-draggable'>
-    draggable
-  </span>
-  <span class='example-dropzone'> dropzone </span>
-</div>
 
 Maintenant, si vous essayez de déplacer l'élément déplaçable avec votre souris (désolé pour les visiteurs mobiles ! 🙈) vous devriez voir une version plus légère de l'élément se déplacer avec votre curseur lors du glissé.
 
@@ -198,7 +163,7 @@ function onDrop(event) {
 
   const draggableElement = document.getElementById(id);
   const dropzone = event.target;
-  
+
   dropzone.appendChild(draggableElement);
 
   event
