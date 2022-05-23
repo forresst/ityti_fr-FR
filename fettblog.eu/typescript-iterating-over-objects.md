@@ -2,7 +2,7 @@
 
 ![Stefan Baumgartner](https://fettblog.eu/wp-content/uploads/me.jpg)
 
-Publié le 11 mai 2022, écrit par [@ddprrt](https://twitter.com//ddprrt). Temps de lecture : 7 minutes
+Publié le 11 mai 2022, écrit par [@ddprrt](https://twitter.com/ddprrt). Temps de lecture : 7 minutes
 
 Il est rare de trouver un casse-tête en TypeScript qui soit plus compliqué que d'essayer d'accéder à la propriété d'un objet en itérant à travers ses clés. Il s'agit d'un modèle qui est si commun en JavaScript, mais TypeScript vous présente tous les problèmes. Avec cette simple ligne :
 
